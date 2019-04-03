@@ -1,6 +1,8 @@
 package com.fr.banq.proj_banq;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Map;
 
 import com.fr.banq.exception.BanqueException;
 
@@ -13,7 +15,8 @@ public class Client2 {
 	private int numeroClient;
 	final private int taille=1000;
 
-	private ArrayList<Compte> ListeCompte = new ArrayList<Compte>();
+	//private ArrayList<Compte> ListeCompte = new ArrayList<Compte>();
+	private Map<Integer, Compte> ListeCompte = new Hashtable<Integer, Compte>();
 	private ArrayList<CompteRemunere> ListeCompteRemunere = new ArrayList<CompteRemunere>();
 	private ArrayList<CompteASeuil> ListeCompteASeuil = new ArrayList<CompteASeuil>();
 
@@ -59,12 +62,16 @@ public class Client2 {
 	}
 
 	public void ajouterCompte(Compte ccc) throws BanqueException  {
-		if(ListeCompte.size()!=taille) {
+		/*if(ListeCompte.size()!=taille) {
 			this.ListeCompte.add(ccc);	
 		}else {
 			throw new BanqueException("Dépassement de tableau");
 		}
-		this.ListeCompte.add(ccc);
+		this.ListeCompte.add(ccc);*/
+		Integer i;
+		i=ListeCompte.keySet().size();
+		ListeCompte.put(i, ccc);
+		System.out.println("***"+ListeCompte.keySet().size());
 	}
 
 	public void retirerCompte(int numeroComte) throws CompteNonValide {
@@ -74,6 +81,7 @@ public class Client2 {
 			throw new CompteNonValide("bad value 0");
 		}
 		this.ListeCompte.remove(indx);
+		
 	}
 
 	public int rechercheCompte(int numeroCompte) throws CompteNonValide {
