@@ -11,7 +11,7 @@ public class Client2 {
 	private int age;
 	private double soldeClient;
 	private int numeroClient;
-	final private int taille=2;
+	final private int taille=1000;
 
 	private ArrayList<Compte> ListeCompte = new ArrayList<Compte>();
 	private ArrayList<CompteRemunere> ListeCompteRemunere = new ArrayList<CompteRemunere>();
